@@ -1,0 +1,5 @@
+robotframework
+robotframework-requests
+robotframework-jsonlibrary
+requests
+#wajib install python3 ==> brew install python3

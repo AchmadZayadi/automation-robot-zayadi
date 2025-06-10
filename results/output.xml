@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3 (Python 3.13.3 on darwin)" generated="2025-06-10T17:43:45.805431" rpa="false" schemaversion="5">
+<suite id="s1" name="PRODUCT-PAYMENT" source="/Users/achmadzayadi/Downloads/nc-ottopoint-loyalty-master-nc/testcases/ottopoint.robot">
+<test id="s1-t1" name="Login - Success" line="8">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.033820" level="INFO">${phone} = 081299465055</msg>
+<var>${phone}</var>
+<arg>081299465055</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.033726" elapsed="0.000117"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.033995" level="INFO">${expireTime} = 500000s</msg>
+<var>${expireTime}</var>
+<arg>500000s</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.033933" elapsed="0.000075"/>
+</kw>
+<kw name="Login Request Body" owner="keyOttopointApps">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.034311" level="INFO">${bodySign} = {"phone":"081299465055","expireTime":"500000s"}</msg>
+<var>${bodySign}</var>
+<arg>{"phone":"081299465055","expireTime":"500000s"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.034263" elapsed="0.000059"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.034613" level="INFO">&amp;{data} = { timestamp=1726033478 | deviceId=7179948586 | Geolocation=-6.236942520911433, 106.825000507283605 | appsID=appsid | channelID=H2H | institutionId=ONCP0004 | key=a461030a-6c8d-4658-bc09-dea08fd0f706 |...</msg>
+<var>&amp;{data}</var>
+<arg>timestamp=${Timestamp}</arg>
+<arg>deviceId=${Deviceid}</arg>
+<arg>Geolocation=${Geolocation}</arg>
+<arg>appsID=${AppsId}</arg>
+<arg>channelID=${ChannelId}</arg>
+<arg>institutionId=${InstitutionId}</arg>
+<arg>key=${key}</arg>
+<arg>Signature=${Signature}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.034372" elapsed="0.000254"/>
+</kw>
+<return>
+<value>${bodySign}</value>
+<status status="PASS" start="2025-06-10T17:43:46.034657" elapsed="0.000024"/>
+</return>
+<msg time="2025-06-10T17:43:46.034733" level="INFO">${body} = {"phone":"081299465055","expireTime":"500000s"}</msg>
+<var>${body}</var>
+<arg>${phone}</arg>
+<arg>${expireTime}</arg>
+<status status="PASS" start="2025-06-10T17:43:46.034125" elapsed="0.000618"/>
+</kw>
+<kw name="Login - Success" owner="keyOttopointApps">
+<kw name="Set headersLogin" owner="keyOttopointApps">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.035205" level="INFO">${headers} = {'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.825000507283605', 'channelId': 'H2H', 'appsId': 'appsid', 'Signature': '5a2d5...</msg>
+<var>${headers}</var>
+<arg>timestamp=${Timestamp}</arg>
+<arg>institutionId=${InstitutionId}</arg>
+<arg>deviceId=${Deviceid}</arg>
+<arg>Geolocation=${Geolocation}</arg>
+<arg>channelId=${ChannelId}</arg>
+<arg>appsId=${AppsId}</arg>
+<arg>Signature=${Signature}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.035038" elapsed="0.000178"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-06-10T17:43:46.035242" elapsed="0.000016"/>
+</return>
+<msg time="2025-06-10T17:43:46.035312" level="INFO">${headersOttopoint} = {'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.825000507283605', 'channelId': 'H2H', 'appsId': 'appsid', 'Signature': '5a2d5...</msg>
+<var>${headersOttopoint}</var>
+<status status="PASS" start="2025-06-10T17:43:46.034954" elapsed="0.000368"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-06-10T17:43:46.035449" level="INFO">Creating Session using : alias=Login, url=https://nc-apidev.ottopoint.id/loyalty/v2/login/user, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Login</arg>
+<arg>${OTTOPOINT_LOGIN}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-06-10T17:43:46.035363" elapsed="0.000176"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-06-10T17:43:46.100423" level="INFO">POST Request : url=https://nc-apidev.ottopoint.id/loyalty/v2/login/user 
+ path_url=/loyalty/v2/login/user 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.825000507283605', 'channelId': 'H2H', 'appsId': 'appsid', 'Signature': '5a2d5a1dbd129a031bf36cb83891e48765ebbcb31bcb40bd4d0942708cf725143e64af6276cfb3d633093bd683c4d6bc4a814bc9fa08d67c86cb8680060ea5f6', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'"{\\"phone\\":\\"081299465055\\",\\"expireTime\\":\\"500000s\\"}"' 
+ </msg>
+<msg time="2025-06-10T17:43:46.100510" level="INFO">POST Response : url=https://nc-apidev.ottopoint.id/loyalty/v2/login/user 
+ status=200, reason=OK 
+ headers={'Server': 'nginx', 'Date': 'Tue, 10 Jun 2025 10:49:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '79', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'Authorization, Origin, X-Requested-With, Content-Type, Accept, institutionid, deviceid, geolocation, channelid, appsid, authorization, timestamp, signature'} 
+ body={"meta":{"status":false,"code":6,"message":"Invalid request data"},"data":null} 
+ </msg>
+<msg time="2025-06-10T17:43:46.100560" level="INFO">/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'nc-apidev.ottopoint.id'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-06-10T17:43:46.100695" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>Login</arg>
+<arg>${OTTOPOINT_LOGIN}</arg>
+<arg>json=${bodySign}</arg>
+<arg>headers=${headersOttopoint}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.035585" elapsed="0.065128"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.101439" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.100839" elapsed="0.000642"/>
+</kw>
+<return>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-06-10T17:43:46.101518" elapsed="0.000026"/>
+</return>
+<msg time="2025-06-10T17:43:46.102030" level="INFO">${response} = {'meta': {'status': False, 'code': 6, 'message': 'Invalid request data'}, 'data': None}</msg>
+<var>${response}</var>
+<arg>${body}</arg>
+<status status="PASS" start="2025-06-10T17:43:46.034833" elapsed="0.067214"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.102252" level="INFO">Response: {'meta': {'status': False, 'code': 6, 'message': 'Invalid request data'}, 'data': None}</msg>
+<arg>Response: ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.102164" elapsed="0.000114"/>
+</kw>
+<status status="PASS" start="2025-06-10T17:43:46.033232" elapsed="0.069136"/>
+</test>
+<test id="s1-t2" name="CheckBalance - Success" line="19">
+<kw name="CheckBalance - Success" owner="keyOttopointApps">
+<kw name="Set headers" owner="keyOttopointApps">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.103343" level="INFO">${headers} = {'Authorization': 'Bearer NGE3MDZkODQtOTE2Yy00MGYyLWExNjYtMjg5NzAwZmI3MzEx', 'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.8...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${Authorization}</arg>
+<arg>timestamp=${Timestamp}</arg>
+<arg>institutionId=${InstitutionId}</arg>
+<arg>deviceId=${Deviceid}</arg>
+<arg>Geolocation=${Geolocation}</arg>
+<arg>channelId=${ChannelId}</arg>
+<arg>appsId=${AppsId}</arg>
+<arg>Signature=</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.103082" elapsed="0.000278"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-06-10T17:43:46.103398" elapsed="0.000018"/>
+</return>
+<msg time="2025-06-10T17:43:46.103487" level="INFO">${headersOttopoint} = {'Authorization': 'Bearer NGE3MDZkODQtOTE2Yy00MGYyLWExNjYtMjg5NzAwZmI3MzEx', 'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.8...</msg>
+<var>${headersOttopoint}</var>
+<status status="PASS" start="2025-06-10T17:43:46.102961" elapsed="0.000540"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-06-10T17:43:46.103666" level="INFO">Creating Session using : alias=CheckBalance, url=https://nc-apidev.ottopoint.id/loyalty/v2/check-balance/earning, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>CheckBalance</arg>
+<arg>${OTTOPOINT_BALANCE}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-06-10T17:43:46.103560" elapsed="0.000198"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-06-10T17:43:46.152856" level="INFO">GET Request : url=https://nc-apidev.ottopoint.id/loyalty/v2/check-balance/earning 
+ path_url=/loyalty/v2/check-balance/earning 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer NGE3MDZkODQtOTE2Yy00MGYyLWExNjYtMjg5NzAwZmI3MzEx', 'timestamp': '1726033478', 'institutionId': 'ONCP0004', 'deviceId': '7179948586', 'Geolocation': '-6.236942520911433, 106.825000507283605', 'channelId': 'H2H', 'appsId': 'appsid', 'Signature': ''} 
+ body=None 
+ </msg>
+<msg time="2025-06-10T17:43:46.152918" level="INFO">GET Response : url=https://nc-apidev.ottopoint.id/loyalty/v2/check-balance/earning 
+ status=200, reason=OK 
+ headers={'Server': 'nginx', 'Date': 'Tue, 10 Jun 2025 10:49:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '103', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'Authorization, Origin, X-Requested-With, Content-Type, Accept, institutionid, deviceid, geolocation, channelid, appsid, authorization, timestamp, signature'} 
+ body={"meta":{"status":false,"code":60,"message":"Token or Session Expired Please Login Again"},"data":null} 
+ </msg>
+<msg time="2025-06-10T17:43:46.152964" level="INFO">/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'nc-apidev.ottopoint.id'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-06-10T17:43:46.153078" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>CheckBalance</arg>
+<arg>${OTTOPOINT_BALANCE}</arg>
+<arg>headers=${headersOttopoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.103821" elapsed="0.049275"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.153738" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.153204" elapsed="0.000570"/>
+</kw>
+<return>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-06-10T17:43:46.153808" elapsed="0.000025"/>
+</return>
+<msg time="2025-06-10T17:43:46.154301" level="INFO">${response} = {'meta': {'status': False, 'code': 60, 'message': 'Token or Session Expired Please Login Again'}, 'data': None}</msg>
+<var>${response}</var>
+<status status="PASS" start="2025-06-10T17:43:46.102746" elapsed="0.051572"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-10T17:43:46.154508" level="INFO">Response: {'meta': {'status': False, 'code': 60, 'message': 'Token or Session Expired Please Login Again'}, 'data': None}</msg>
+<arg>Response: ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-10T17:43:46.154423" elapsed="0.000109"/>
+</kw>
+<status status="PASS" start="2025-06-10T17:43:46.102513" elapsed="0.052107"/>
+</test>
+<status status="PASS" start="2025-06-10T17:43:45.806442" elapsed="0.348529"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="PRODUCT-PAYMENT" id="s1" pass="2" fail="0" skip="0">PRODUCT-PAYMENT</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,28 @@
+stages:
+  - test
+
+variables:
+  # ROBOT_ENV: dev
+  # ROBOT_TOKEN: your_bearer_token_here
+  API_BASE: https://nc-apidev.ottopoint.id
+
+# deploy_app:
+#   stage: deploy
+#   script:
+#     - echo "Deploying app..."  # Ganti dengan perintah deploy-mu
+#   only:
+#     - main
+
+robot_test:
+  stage: test
+  image: python:3.11
+  before_script:
+    - pip install robotframework requests robotframework-requests
+  script:
+    - mkdir -p results
+    - robot -d results
+  artifacts:
+    paths:
+      - results
+  only:
+    - main
