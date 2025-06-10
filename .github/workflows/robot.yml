@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          sh run_test.sh 
+          make NAME=ottopoint-loyalty TEST_CASE=testcases/ottopoint.robot
 
       - name: Upload Robot Framework test results
         uses: actions/upload-artifact@v4
